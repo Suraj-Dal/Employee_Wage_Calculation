@@ -12,16 +12,19 @@ else
     //UC2 to calculate Daily Wages of employee.
     let empHrs = 0;
     const WAGE_PER_HRS = 20;
-    let checkHrs = (Math.floor(Math.random() * 10) % 3) + 1;
-    switch (checkHrs)
+    let checkHrs = (Math.floor(Math.random() * 10) % 2) + 1;
+    //UC3 to create function to get Working HRS.
+    function getWorkingHrs(checkHrs)
     {
-        case 1:
-            empHrs = 8;
-            break;
-        case 2:
-            empHrs = 4;
-            break;
+        switch (checkHrs)
+        {
+            case 1:
+                return 8;
+            case 2:
+                return 4;
+        }
     }
-        let empWage = (empHrs * WAGE_PER_HRS);
-        console.log("Wages of employee for day is: " + empWage);
+    empHrs = getWorkingHrs(checkHrs);
+    let empWage = (empHrs * WAGE_PER_HRS);
+    console.log("Working Hrs: "+ empHrs +" \nWages of employee for day is: " + empWage);
 }
