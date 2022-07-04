@@ -1,18 +1,9 @@
 const IS_ABSENT = 0;
+const WAGE_PER_HRS = 20;
+const totalWorkingDays = 20;
 let empCheck = Math.floor(Math.random() * 10) % 2;
-//UC1 to check Emp Present or Absent.
-if (empCheck == IS_ABSENT)
-{
-    console.log("Employee is Absent.");
-    return;
-}
-else
-{
-    console.log("Employee is Present.");
     //UC2 to calculate Daily Wages of employee.
     let empHrs = 0;
-    const WAGE_PER_HRS = 20;
-    let checkHrs = (Math.floor(Math.random() * 10) % 2) + 1;
     //UC3 to create function to get Working HRS.
     function getWorkingHrs(checkHrs)
     {
@@ -22,9 +13,17 @@ else
                 return 8;
             case 2:
                 return 4;
+            default:
+                return 0;
         }
     }
-    empHrs = getWorkingHrs(checkHrs);
-    let empWage = (empHrs * WAGE_PER_HRS);
-    console.log("Working Hrs: "+ empHrs +" \nWages of employee for day is: " + empWage);
-}
+    //UC4 calculate Emp Wage for month
+    let totalEmpHrs = 0;
+    for (let day = 0; day < totalWorkingDays; day++)
+    {
+        let checkHrs = (Math.floor(Math.random() * 10) % 3) + 1;
+        empHrs = getWorkingHrs(checkHrs);
+        totalEmpHrs += empHrs;
+    }
+    let totalWage = totalEmpHrs * WAGE_PER_HRS;
+    console.log("Total Working Hrs: "+ totalEmpHrs +" \nWages of employee for day is: " + totalWage);
