@@ -19,6 +19,7 @@ let empCheck = Math.floor(Math.random() * 10) % 2;
     }
     //UC4 calculate Emp Wage for month
     let totalEmpHrs = 0;
+    console.log("----------Employee Wage Calculator----------");
     for (let day = 0; day < totalWorkingDays; day++)
     {
         let checkHrs = (Math.floor(Math.random() * 10) % 3) + 1;
