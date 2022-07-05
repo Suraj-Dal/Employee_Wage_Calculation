@@ -36,7 +36,7 @@ while (totalEmpHrs <= MAX_WORKING_HRS && totalWorkingDays < TOTAL_WORKING_DAYS)
 
 //UC 6 to store daily wage along with total wage.
 let day = 1;
-let dayWithWageDic = new Map;
+let dayWithWageDic = new Map; // UC 8 to use Map
 dailyWagesArr.forEach(element => {
     console.log("Day "+ day +" Wage: "+ element);
     dayWithWageDic.set(day, element);
