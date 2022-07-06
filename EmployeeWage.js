@@ -2,7 +2,7 @@ const IS_ABSENT = 0, WAGE_PER_HRS = 20, TOTAL_WORKING_DAYS = 20, MAX_WORKING_HRS
 let empCheck = Math.floor(Math.random() * 10) % 2;
 let empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
 let dailyWagesArr = new Array();
-
+let empDailyHrsAndWage = new Array();
 //UC3 to create function to get Working HRS.
 function getWorkingHrs(checkHrs)
 {
@@ -32,13 +32,23 @@ while (totalEmpHrs <= MAX_WORKING_HRS && totalWorkingDays < TOTAL_WORKING_DAYS)
     dailyWagesArr.push(dailyWage(empHrs));
     totalEmpHrs += empHrs;
     totalWorkingDays++;
+    // UC10 to store day, Hours and wage in one object.
+    empDailyHrsAndWage.push({
+        day:totalWorkingDays,
+        dailyHrs:empHrs,
+        dayWage:dailyWage(empHrs),
+        toString()    {
+            return "\nDay: "+ this.day +" Working Hours: "+ this.dailyHrs +" Wage: "+ this.dayWage
+            }
+    });
 }
+console.log("UC10:"+ empDailyHrsAndWage);
 
 //UC 6 to store daily wage along with total wage.
 let day = 1;
 let dayWithWageDic = new Map; // UC 8 to use Map
 dailyWagesArr.forEach(element => {
-    console.log("Day "+ day +" Wage: "+ element);
+    //console.log("Day "+ day +" Wage: "+ element);
     dayWithWageDic.set(day, element);
     day++;
 });
@@ -58,11 +68,11 @@ console.log("Total monthly wage using foreach method: "+ monthlyWage);
 //UC7C - Day when full day wage of 160 is earned.
 function fullDayWage(wageForDay)
 {
-    console.log("Days When full day wage of 160 is earned:");
+    //console.log("Days When full day wage of 160 is earned:");
     dayWithWageDic.forEach((value, key) => {
-        if (value == "160")
-        console.log("Day "+ key +" Wage "+ value);
-    })
+       // if (value == "160")
+        //console.log("Day "+ key +" Wage "+ value);
+    });
 }
 fullDayWage(wageForDay);
 
@@ -75,10 +85,10 @@ for (var [key, value] of dayWithWageDic)
         break;
     }
 }
-console.log("First occurrence of full day wage is at Day "+ first);
+//console.log("First occurrence of full day wage is at Day "+ first);
 
 //UC7F part time wages
-console.log("Days When part time wage of 80 is earned:");
+//console.log("Days When part time wage of 80 is earned:");
 dayWithWageDic.forEach((value, key) => {
     if (value == "80")
         console.log("Day "+ key +" Wage "+ value);
