@@ -53,7 +53,7 @@ dailyWagesArr.forEach(element => {
     day++;
 });
 let totalWage = dailyWage(totalEmpHrs);
-console.log("Total Working Days: "+ totalWorkingDays +"\nTotal Working Hrs: "+ totalEmpHrs +" \nTotal Monthly Wage : " + totalWage);
+//console.log("Total Working Days: "+ totalWorkingDays +"\nTotal Working Hrs: "+ totalEmpHrs +" \nTotal Monthly Wage : " + totalWage);
 
 //UC7A - total wage using daily wage.
 let wageForDay = dailyWage(empHrs);
@@ -63,7 +63,7 @@ function sum(wageForDay)
     monthlyWage += wageForDay;
 }
 dailyWagesArr.forEach(sum);
-console.log("Total monthly wage using foreach method: "+ monthlyWage);
+//console.log("Total monthly wage using foreach method: "+ monthlyWage);
 
 //UC7C - Day when full day wage of 160 is earned.
 function fullDayWage(wageForDay)
@@ -90,8 +90,8 @@ for (var [key, value] of dayWithWageDic)
 //UC7F part time wages
 //console.log("Days When part time wage of 80 is earned:");
 dayWithWageDic.forEach((value, key) => {
-    if (value == "80")
-        console.log("Day "+ key +" Wage "+ value);
+    //if (value == "80")
+        //console.log("Day "+ key +" Wage "+ value);
 })
 
 //UC7G no. of days employee worked.
@@ -117,3 +117,27 @@ dayWithWageDic.forEach((value, key)=>{
 console.log("No Working Days: "+ noWorkDaysArr);
 console.log("Full Working Days: "+ fullWorkDaysArr);
 console.log("Part time working Days: "+ partTimeDaysArr);
+
+//UC11A - Total Hrs and Wages using Arrow function.
+let totalHrsArrow = empDailyHrsAndWage
+                    .filter(dailyHours => dailyHours.dailyHrs > 0)
+                    .reduce((totalHrsArrow, dailyHours) => totalHrsArrow += dailyHours.dailyHrs, 0);
+let totalWageArrow = empDailyHrsAndWage
+                    .filter(dailyWages => dailyWages.dayWage > 0)
+                    .reduce((totalWageArrow, dailyWages) => totalWageArrow += dailyWages.dayWage, 0);
+console.log("UC11 - \nTotal Hours "+ totalHrsArrow +"\nTotal Wages: "+ totalWageArrow);
+
+//UC11B - Full Work day 
+console.log("UC11 B - Full Working Day using Arrow Function.")
+empDailyHrsAndWage.filter(fullday => fullday.dailyHrs == 8)
+                    .forEach(fullday => console.log(fullday.toString()));
+
+//UC11C - Part time day
+console.log("UC11 C - Part Time working days using Arrow functions.");
+empDailyHrsAndWage.filter(partTime => partTime.dailyHrs == 4)
+                    .forEach(partTime => console.log(partTime.toString()));
+
+//UC11D - No working Days 
+let noWorkDay = empDailyHrsAndWage.filter(noWork => noWork.dailyHrs == 0)
+                                    .map(noWork => noWork.day);
+console.log("UC11 D - No working days using Map functions.\n"+ noWorkDay);
